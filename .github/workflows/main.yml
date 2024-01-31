@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+              # Fetch the secret API key
+      - name: Get API key
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          echo "API key retrieved: $API_KEY"
+      #Code to deploy build to Netlify using Github Actions
+     # - name: Install dependencies
+     #   run: npm install
+
+      #- name: Build
+      #  run: npm run build
+
+# - name: Deploy to Netlify
+#   uses: netlify/actions/cli@v1
+#   with:
+#     args: deploy --prod
+#   env:
+#     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}  # Accessing Netlify API token
+#     NETLIFY_SITE_ID: NETLIFY_SITE_ID  
+#     API_KEY: ${{ secrets.JAPANESE_API_KEY }}  # Accessing the secret API key
+
+
